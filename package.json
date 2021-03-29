@@ -8,23 +8,6 @@
     "test": "jest --watch",
     "stan": "standart --fix"
   },
-  "lint-staged": {
-    "*.js": [
-      "standart --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
-    }
-  },
-  "standard": {
-    "env": [
-      "jest"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JacksonECO/node_comentarios.git"
