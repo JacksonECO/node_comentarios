@@ -21,6 +21,13 @@ app.post('/api/addComment', urlEncodedParser, async(req, res) => {
 
 })
 
+app.get('/api/comments', urlEncodedParser, async (req, res) => {
+  const db = new BancoDb()
+
+  const [list] = await db.selectCustomers()
+  res.send(list)
+})
+
 app.get('/test', (req, res) => {
   return res.send('Hello Worlds')
 })
