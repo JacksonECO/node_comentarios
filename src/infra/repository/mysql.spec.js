@@ -11,8 +11,7 @@ describe('MySql', () => {
   test('Should InsertData', async () => {
     const sut = new BancoDb()
     const data = {
-      name: 'Jackson',
-      text: 'test'
+      comment: 'Jackson',
     }
     const resp = await sut.insertCustomer(data)
     expect(resp).toBeTruthy()

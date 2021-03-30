@@ -15,16 +15,15 @@ module.exports = class BancoDb {
     await this.connection.end()
   }
 
-  async insertCustomer(customer) {
+  async insertCustomer(comment) {
     const bd = await this.connect()
-    const sql = 'INSERT INTO teste1(name,text) VALUES (?,?);'
-    const values = [customer.name, customer.text]
-    return await bd.query(sql, values)
+    const sql = 'INSERT INTO comments (comment) VALUES (?);'
+    return await bd.query(sql, comment)
   }
 
   async selectCustomers() {
     const conn = await this.connect()
-    const [rows] = await conn.query('SELECT * FROM teste1;')
+    const [rows] = await conn.query('SELECT * FROM comments;')
     return rows
   }
 

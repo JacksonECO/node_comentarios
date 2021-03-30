@@ -10,17 +10,13 @@ let urlEncodedParser = bodyParser.urlencoded({extended:false})
 app.post('/api/addComment', urlEncodedParser, function async(req, res) {
   const db = new BancoDb()
 
-  db.insertCustomer({
-    name: 'nome',
-    text: req.body.name,
-  })
+  db.insertCustomer(req.body.name)
   console.log("jgfddfg")
   let obj = {
     name: req.body.name,
     age: 18
   }
   res.json(obj);
-  db.disconnect()
 })
 
 app.get('/test', (req, res) => {
