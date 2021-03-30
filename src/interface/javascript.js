@@ -19,6 +19,37 @@
       }
     };
     ajax.send(params);
+
+    let comment = ""
+
+    for(let x=0; x<name.value.length; x++){
+      if (name.value[x]=='\n')
+        comment = comment + "<br>"
+      else
+        comment = comment + name.value[x]
+    }
+    var list = document.querySelector('#listComments');
+
+    var item = document.createElement('dt');
+    item.innerHTML =
+      "<table width='100%'>" +
+      "<td width = '75%'>" +
+      "<h6>" +
+      comment+
+      "<br><br>" +
+      "</h6>" +
+      "</td>" +
+
+      "<td width='5%'></td>" +
+
+      "<td width='20%'>" +
+      "<button type='button' class='btn btn-outline-success'>Ouvir</button>" +
+      "</td>" +
+      "</table>"
+
+    list.appendChild(item);
   }
   form1.addEventListener('submit', sendForm, false);
 })(window, document);
+
+"fggfdfg↵dfdsf↵dsf↵"
