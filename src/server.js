@@ -7,16 +7,18 @@ let app = express()
 app.use(cors());
 let urlEncodedParser = bodyParser.urlencoded({extended:false})
 
-app.post('/api/addComment', urlEncodedParser, function async(req, res) {
+app.post('/api/addComment', urlEncodedParser, async(req, res) => {
   const db = new BancoDb()
 
-  db.insertCustomer(req.body.name)
-  console.log("jgfddfg")
-  let obj = {
-    name: req.body.name,
-    age: 18
+  try {
+    await db.insertCustomer(req.body.name)
+    console.log(req.body.name)
+    res.send("Add: " + req.body.name);
+  } catch (error) {
+    res.statusCode = 503; //503 - Serviço indisponível (Service Unavailable)
+    res.send("Banco não funcionando")
   }
-  res.json(obj);
+
 })
 
 app.get('/test', (req, res) => {
