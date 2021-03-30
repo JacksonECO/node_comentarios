@@ -2,7 +2,7 @@
   "name": "node_comentarios",
   "version": "1.0.0",
   "description": "comentarios com IBM Watson",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/index.js",
     "test": "jest --watch",
@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/JacksonECO/node_comentarios#readme",
   "dependencies": {
+    "ajax": "0.0.4",
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
