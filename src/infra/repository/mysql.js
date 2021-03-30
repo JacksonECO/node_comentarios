@@ -18,7 +18,7 @@ module.exports = class BancoDb {
   async insertCustomer(customer) {
     const bd = await this.connect()
     const sql = 'INSERT INTO teste1(name,text) VALUES (?,?);'
-    const values = [customer.nome, customer.text]
+    const values = [customer.name, customer.text]
     return await bd.query(sql, values)
   }
 
