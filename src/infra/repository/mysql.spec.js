@@ -10,9 +10,7 @@ describe('MySql', () => {
 
   test('Should InsertData', async () => {
     const sut = new BancoDb()
-    const data = {
-      comment: 'Jackson',
-    }
+    const data = 'Jackson'
     const resp = await sut.insertCustomer(data)
     expect(resp).toBeTruthy()
     await sut.disconnect()
@@ -21,7 +19,7 @@ describe('MySql', () => {
   test('Should ViewData', async () => {
     const sut = new BancoDb()
     const resp = await sut.selectCustomers()
-    // console.log(resp[0].name)
+    // console.log(resp)
     expect(resp).toBeTruthy()
     await sut.disconnect()
   })

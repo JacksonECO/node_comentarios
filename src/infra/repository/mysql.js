@@ -23,8 +23,7 @@ module.exports = class BancoDb {
 
   async selectCustomers() {
     const conn = await this.connect()
-    const [rows] = await conn.query('SELECT * FROM comments;')
-    return rows
+    return await conn.query('SELECT * FROM comments;')
   }
 
 }
