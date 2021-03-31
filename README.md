@@ -11,7 +11,7 @@ Tela de comentários feita em NodeJs que permite a leitura  de comentários util
    1. E com a senha: '123456'
    1. Ao fazer isso deve dar permissão para o novo usário criar e editar databases e tabelas;
 1. Executar o comando: 'npm run start'
-1. Acessar o link <https://localhost:3333>
+1. Acessar o link <http://localhost:3333>
 
 Feito isso, ao iniciar será criado o database 'smarkio' e a tabela 'comments', que será utilizado na aplicação.
 

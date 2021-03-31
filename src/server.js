@@ -40,5 +40,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3333, (req, res) => {
-  console.log(' Rodando na porta 3333')
+  console.log('Server iniciado: http://localhost:3333')
 })
