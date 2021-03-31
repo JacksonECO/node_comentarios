@@ -3,9 +3,12 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const BancoDb = require('./infra/repository/mysql')
 
+let urlEncodedParser = bodyParser.urlencoded({extended:false})
 let app = express()
 app.use(cors());
-let urlEncodedParser = bodyParser.urlencoded({extended:false})
+app.use(express.static('src/interface'));
+app.use(express.static('favicon.ico'));
+
 
 app.post('/api/addComment', urlEncodedParser, async(req, res) => {
   const db = new BancoDb()
@@ -29,7 +32,11 @@ app.get('/api/comments', urlEncodedParser, async (req, res) => {
 })
 
 app.get('/test', (req, res) => {
-  return res.send('Hello Worlds')
+  res.send('Hello Worlds')
+})
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/interface/index.html');
 })
 
 app.listen(3333, (req, res) => {
