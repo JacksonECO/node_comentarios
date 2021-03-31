@@ -79,7 +79,8 @@
   </table>
       
   <script>
-
+    /// Tenho conciencia que nem de longe é a melhor maneira de fazer a requisição uma vez que meus dados estão ficando expostos;
+    /// No entando não consegui salvar o arquivo de musica dentro do servidor para poder ser pego pelo cliente;
     function donwloadVoice(text) {
       // event.preventDefault();
       console.log(text.toString())
@@ -95,10 +96,9 @@
       ajax.setRequestHeader('accept', 'audio/wav')
       ajax.onreadystatechange = function () {
         if (ajax.status === 200 && ajax.readyState === 4) {
-          // let db = JSON.parse(ajax.responseText);
-          // response.innerHTML = "O usuário "+arr.name+" possui "+arr.age+" anos de idade";
+
           console.log(ajax.status);
-          // console.log(ajax.responseText)
+
           const music = document.querySelector('#music');
           music.innerHTML = "<audio src='https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/e0262ab9-cca3-4e08-8a7a-4cdf8321e9c9/v1/synthesize?accept=audio/wav&text=" +
             commentVoice +

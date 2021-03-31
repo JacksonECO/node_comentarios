@@ -15,9 +15,11 @@
         var comment2 = ""
         
         for (x = 0; x < element.length; x++) {
-          if (element[x] == '\n'){
-            comment = comment + "<br>"
-            comment2 = comment2 + " "
+          if (element[x] == '\n') {
+            if (x != element.length - 1) {
+              comment = comment + "<br>"
+              comment2 = comment2 + " "
+            }
           }
           else{
             comment = comment + element[x]

@@ -5,7 +5,14 @@
 
   function sendForm(event){
     event.preventDefault();
-    if (name.value !== ""){
+    let valid = false;
+    for (x = 0; x < name.value.length; x++) {
+      if (name.value[x] !== '\n' && name.value[x] !== ' '){
+        valid = true;
+        break;
+      }
+    }
+    if (valid){
       console.log(name.value);
       let ajax = new XMLHttpRequest();
       ajax.open("POST", 'http://localhost:3333/api/addComment');
@@ -20,9 +27,11 @@
           let comment2 = ""
 
           for (x = 0; x < name.value.length; x++) {
-            if (name.value[x] == '\n'){
-              comment = comment + "<br>"
-              comment2 = comment2 + " "
+            if (name.value[x] == '\n') {
+              if (x != name.value.length - 1) {
+                comment = comment + "<br>"
+                comment2 = comment2 + " "
+              }
             }
             else{
               comment = comment + name.value[x]
@@ -53,10 +62,14 @@
           list.appendChild(item);
 
           name.value = ""
+        } else if (ajax.status === 503 && ajax.readyState === 4){
+          alert("Exitem algum problema com o banco de dados, verifique a conexão!!!")
         }
       };
       ajax.send('name=' + name.value);
 
+    }else {
+      alert("Digite um comentário primeiro!")
     }
   }
   form1.addEventListener('submit', sendForm, false);
