@@ -18,9 +18,11 @@
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
     crossorigin="anonymous"></script>
   <script src="scripts/getDbComments.js"></script>
+
   <br>
   <br>
-  <br>
+  <div id="music">
+  </div>
 
   <table width="100%" >
     <tr>
@@ -56,12 +58,12 @@
                 Exte é um comentário exemplo<br><br>
               </h6>
             </td>
-          
             <td width='5%'></td>
             
             <td width='20%'>
-              <button type='button' class='btn btn-outline-success'>Ouvir</button>
+              <button type="submit" class='btn btn-outline-success' onclick="donwloadVoice('Exte é um comentário exemplo');">Ouvir</button>
             </td>
+            
 
           </table> -->
         </d1>
@@ -73,6 +75,40 @@
     </tr>
   </table>
       
+  <script>
+
+    function donwloadVoice(text) {
+      // event.preventDefault();
+      console.log(text.toString())
+      const commentVoice = encodeURI(text.toString())
+      let ajax = new XMLHttpRequest();
+      ajax.open(
+        "GET",
+        'https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/e0262ab9-cca3-4e08-8a7a-4cdf8321e9c9/v1/synthesize?accept=audio/wav&text=' +
+        commentVoice +
+        '&voice=pt-BR_IsabelaVoice&Content-Type=application/json'
+      );
+      ajax.setRequestHeader('Authorization', 'Basic YXBpa2V5OjhBYlB0MEd2SlNPOWFjbmxEQV93WE9KOUhNZFZoZ2N2YzEtcFY1aEM2TUl5')
+      ajax.setRequestHeader('accept', 'audio/wav')
+      ajax.onreadystatechange = function () {
+        if (ajax.status === 200 && ajax.readyState === 4) {
+          // let db = JSON.parse(ajax.responseText);
+          // response.innerHTML = "O usuário "+arr.name+" possui "+arr.age+" anos de idade";
+          console.log(ajax.status);
+          // console.log(ajax.responseText)
+          const music = document.querySelector('#music');
+          music.innerHTML = "<audio src='https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/e0262ab9-cca3-4e08-8a7a-4cdf8321e9c9/v1/synthesize?accept=audio/wav&text=" +
+            commentVoice +
+            "&voice=pt-BR_IsabelaVoice&Content-Type=application/json' autoplay></audio>"
+
+          console.log("hjhfhwefwfrhfrejhfk")
+
+        };
+
+      }
+      ajax.send();
+    }
+  </script>
 </body>
 
 </html>

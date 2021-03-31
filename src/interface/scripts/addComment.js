@@ -17,15 +17,21 @@
           console.log(ajax.responseText);
 
           let comment = ""
+          let comment2 = ""
 
           for (x = 0; x < name.value.length; x++) {
-            if (name.value[x] == '\n')
+            if (name.value[x] == '\n'){
               comment = comment + "<br>"
-            else
+              comment2 = comment2 + " "
+            }
+            else{
               comment = comment + name.value[x]
+              comment2 = comment2 + name.value[x]
+            }
           }
-          var list = document.querySelector('#listComments');
+          const fun = "donwloadVoice('" + comment2 + "');";
 
+          var list = document.querySelector('#listComments');
           var item = document.createElement('dt');
           item.innerHTML =
             "<table width='100%'>" +
@@ -39,9 +45,10 @@
             "<td width='5%'></td>" +
 
             "<td width='20%'>" +
-            "<button type='button' class='btn btn-outline-success'>Ouvir</button>" +
+            '<button type="submit" class="btn btn-outline-success" onclick="' + fun + '">Ouvir</button>' +
             "</td>" +
             "</table>"
+
 
           list.appendChild(item);
 
