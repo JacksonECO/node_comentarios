@@ -4,7 +4,7 @@
   "description": "comentarios com IBM Watson",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon src/server.js",
     "test": "jest --watch",
     "stan": "standart --fix"
   },
